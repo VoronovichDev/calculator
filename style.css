@@ -1,0 +1,44 @@
+.body {
+   height: 100%;
+}
+.container {
+   max-width: 500px;
+   margin: 15vh auto;
+   display: grid;
+   grid-template-areas:
+      'display display '
+      'dgts  math';
+   grid-template-rows: 60px 300px;
+   grid-template-columns: 2fr 1fr;
+   grid-gap: 10px;
+}
+
+.digits-btns {
+   grid-area: dgts;
+   background: gold;
+}
+.math-btns {
+   grid-area: math;
+   background: gold;
+}
+.display {
+   font-family: 'Russo One', sans-serif;
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
+   grid-area: display;
+   border: 1px black solid;
+   background: gold;
+   padding: 0 0 5px 0;
+   font-size: 24px;
+}
+
+.digits-btns button {
+   font-size: 20px;
+   font-family: 'Russo One', sans-serif;
+}
+
+.math-btns button {
+   font-size: 20px;
+   font-family: 'Russo One', sans-serif;
+}
