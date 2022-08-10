@@ -1,34 +1,41 @@
 function add(a, b) {
-   return a + b
+   return parseFloat(a) + parseFloat(b)
 }
 function subtract(a, b) {
-   return a - b
+   return parseFloat(a) - parseFloat(b)
 }
 function multiply(a, b) {
-   return a * b
+   return parseFloat(a) * parseFloat(b)
 
 }
 function divide(a, b) {
-   return a / b
+   return parseFloat(a) / parseFloat(b)
 }
 
 function operate(operator, num1, num2) {
    switch (operator) {
       case '+':
          firstValue = add(+num1, +num2)
-         display.textContent = firstValue
+         display.innerText = firstValue
          break;
       case '-':
          firstValue = subtract(+num1, +num2)
-         display.textContent = firstValue
+         display.innerText = firstValue
          break;
       case 'x':
          firstValue = multiply(+num1, +num2)
-         display.textContent = firstValue
+         display.innerText = firstValue
          break;
       case '/':
+         if (secondValue === '0') {
+            display.innerText = 'Error'
+            firstValue = ''
+            secondValue = ''
+            mathSign = ''
+            return
+         }
          firstValue = divide(+num1, +num2)
-         display.textContent = firstValue
+         display.innerText = firstValue
          break;
    }
 }
@@ -46,19 +53,17 @@ digits.addEventListener('click', (e) => {
    if (e.target.tagName != 'BUTTON') {
       return
    }
-   if (display.textContent == 0) {
-      display.textContent = ''
+   if (display.innerText === '0') {
+      display.innerText = ''
    }
 
    if (secondValue == '' && mathSign == '') {
       firstValue += e.target.value
-      display.textContent = firstValue
-   } else if (firstValue !== '' && secondValue !== '') {
-
+      display.innerText = firstValue
    }
    else {
       secondValue += e.target.value
-      display.textContent = secondValue
+      display.innerText = secondValue
    }
 
    console.log(firstValue, mathSign, secondValue)
@@ -71,7 +76,6 @@ let math = document.querySelector('.math-btns')
 /* ------------------------------ */
 
 math.addEventListener('click', (e) => {
-   // console.log(e.target.id)
    switch (e.target.id) {
       case 'reset':
          firstValue = '';
@@ -80,32 +84,44 @@ math.addEventListener('click', (e) => {
          display.innerHTML = 0;
          break
       case 'add':
+         if (secondValue != '' && mathSign != '') {
+            operate(mathSign, firstValue, secondValue)
+            secondValue = ''
+         }
          mathSign = e.target.value
-         display.textContent = mathSign
-         console.log(firstValue, mathSign, secondValue)
+         // display.innerText = mathSign
+         // console.log(firstValue, mathSign, secondValue)
          break
       case 'sub':
+         if (secondValue != '' && mathSign != '') {
+            operate(mathSign, firstValue, secondValue)
+            secondValue = ''
+         }
          mathSign = e.target.value
-         display.textContent = mathSign
-         console.log(firstValue, mathSign, secondValue)
          break
       case 'mult':
+         if (secondValue != '' && mathSign != '') {
+            operate(mathSign, firstValue, secondValue)
+            secondValue = ''
+         }
          mathSign = e.target.value
-         display.textContent = mathSign
-         console.log(firstValue, mathSign, secondValue)
          break
       case 'divide':
+         if (secondValue != '' && mathSign != '') {
+            operate(mathSign, firstValue, secondValue)
+            secondValue = ''
+         }
          mathSign = e.target.value
-         display.textContent = mathSign
-         console.log(firstValue, mathSign, secondValue)
          break
       case 'equal':
+         if (secondValue == '') {
+            secondValue = firstValue
+         }
          operate(mathSign, firstValue, secondValue)
-
+         secondValue = '';
+         mathSign = '';
          console.log(firstValue, mathSign, secondValue)
-
          break
-
    }
 
 }
