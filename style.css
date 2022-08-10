@@ -1,6 +1,10 @@
-.body {
+body {
    height: 100%;
+   padding: 0;
+   margin: 0;
+   background: linear-gradient(90deg, #b9deed, #efefef);
 }
+
 .container {
    max-width: 500px;
    margin: 15vh auto;
@@ -15,12 +19,26 @@
 
 .digits-btns {
    grid-area: dgts;
-   background: gold;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-gap: 3px;
 }
+
+#dot {
+   grid-column-start: 2;
+   grid-column-end: 4;
+   grid-row-start: 4;
+   grid-row-end: 4;
+}
+
 .math-btns {
    grid-area: math;
-   background: gold;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   gap: 3px;
 }
+
 .display {
    font-family: 'Russo One', sans-serif;
    display: flex;
@@ -28,17 +46,45 @@
    justify-content: flex-end;
    grid-area: display;
    border: 1px black solid;
-   background: gold;
-   padding: 0 0 5px 0;
+   background-color: rgba(2, 38, 65, 0.75);
+   color: rgba(240, 240, 240, 255);
+   padding: 0 5px 5px 0;
    font-size: 24px;
+   border-radius: 7px;
 }
 
 .digits-btns button {
+   border: 0px;
+   border-radius: 7px;
    font-size: 20px;
    font-family: 'Russo One', sans-serif;
+   transition: all 0.3s ease;
+}
+
+.digits-btns button:hover {
+   background-color: rgba(114, 147, 173, 0.75);
 }
 
 .math-btns button {
+   border: 0px;
+   border-radius: 7px;
    font-size: 20px;
    font-family: 'Russo One', sans-serif;
+   transition: all 0.3s ease;
+}
+
+.math-btns #reset {
+   transition: all 0.3s ease;
+   background-color: rgba(2, 38, 65, 0.75);
+   color: rgba(240, 240, 240, 255);
+}
+.math-btns #reset:hover {
+   background-color: rgba(2, 38, 65, 0.659);
+}
+.math-btns button:hover {
+   background-color: rgba(114, 147, 173, 0.75);
+}
+
+button:active {
+   transform: scale(1.05);
 }
