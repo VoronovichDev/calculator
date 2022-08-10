@@ -66,14 +66,20 @@ digits.addEventListener('click', (e) => {
       display.innerText = secondValue
    }
 
+   if (display.innerText.includes('.')) {
+      dot.disabled = true;
+   };
+
    console.log(firstValue, mathSign, secondValue)
    return
+
 
 })
 /*-----------------------------*/
 
 let math = document.querySelector('.math-btns')
 /* ------------------------------ */
+
 
 math.addEventListener('click', (e) => {
    switch (e.target.id) {
@@ -82,21 +88,22 @@ math.addEventListener('click', (e) => {
          secondValue = '';
          mathSign = '';
          display.innerHTML = 0;
+         dot.disabled = false;
          break
       case 'add':
          if (secondValue != '' && mathSign != '') {
             operate(mathSign, firstValue, secondValue)
             secondValue = ''
          }
+         dot.disabled = false;
          mathSign = e.target.value
-         // display.innerText = mathSign
-         // console.log(firstValue, mathSign, secondValue)
          break
       case 'sub':
          if (secondValue != '' && mathSign != '') {
             operate(mathSign, firstValue, secondValue)
             secondValue = ''
          }
+         dot.disabled = false;
          mathSign = e.target.value
          break
       case 'mult':
@@ -104,6 +111,7 @@ math.addEventListener('click', (e) => {
             operate(mathSign, firstValue, secondValue)
             secondValue = ''
          }
+         dot.disabled = false;
          mathSign = e.target.value
          break
       case 'divide':
@@ -111,15 +119,18 @@ math.addEventListener('click', (e) => {
             operate(mathSign, firstValue, secondValue)
             secondValue = ''
          }
+         dot.disabled = false;
          mathSign = e.target.value
          break
       case 'equal':
          if (secondValue == '') {
+            dot.disabled = false;
             secondValue = firstValue
          }
          operate(mathSign, firstValue, secondValue)
          secondValue = '';
          mathSign = '';
+         dot.disabled = false;
          console.log(firstValue, mathSign, secondValue)
          break
    }
