@@ -45,6 +45,7 @@ let secondValue = ''
 let mathSign = ''
 /* ------------------------------ */
 
+let math = document.querySelector('.math-btns')
 let display = document.querySelector('.display')
 let digits = document.querySelector('.digits-btns')
 /* ------------------------------ */
@@ -77,9 +78,16 @@ digits.addEventListener('click', (e) => {
 })
 /*-----------------------------*/
 
-let math = document.querySelector('.math-btns')
 /* ------------------------------ */
 
+const makeMathOperation = (e) => {
+   if (secondValue != '' && mathSign != '') {
+      operate(mathSign, firstValue, secondValue)
+      secondValue = ''
+   }
+   dot.disabled = false;
+   mathSign = e.target.value
+}
 
 math.addEventListener('click', (e) => {
    switch (e.target.id) {
@@ -91,36 +99,16 @@ math.addEventListener('click', (e) => {
          dot.disabled = false;
          break
       case 'add':
-         if (secondValue != '' && mathSign != '') {
-            operate(mathSign, firstValue, secondValue)
-            secondValue = ''
-         }
-         dot.disabled = false;
-         mathSign = e.target.value
+         makeMathOperation(e)
          break
       case 'sub':
-         if (secondValue != '' && mathSign != '') {
-            operate(mathSign, firstValue, secondValue)
-            secondValue = ''
-         }
-         dot.disabled = false;
-         mathSign = e.target.value
+         makeMathOperation(e)
          break
       case 'mult':
-         if (secondValue != '' && mathSign != '') {
-            operate(mathSign, firstValue, secondValue)
-            secondValue = ''
-         }
-         dot.disabled = false;
-         mathSign = e.target.value
+         makeMathOperation(e)
          break
       case 'divide':
-         if (secondValue != '' && mathSign != '') {
-            operate(mathSign, firstValue, secondValue)
-            secondValue = ''
-         }
-         dot.disabled = false;
-         mathSign = e.target.value
+         makeMathOperation(e)
          break
       case 'equal':
          if (secondValue == '') {
@@ -134,6 +122,5 @@ math.addEventListener('click', (e) => {
          console.log(firstValue, mathSign, secondValue)
          break
    }
-
 }
 )
